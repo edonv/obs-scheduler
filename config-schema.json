@@ -60,7 +60,7 @@
             "$ref": "#/definitions/EventAction"
           },
           "switcher_message": {
-            "title": "Advanced Scene Switcher message",
+            "title": "Advanced Scene Switcher Message",
             "description": "The message to send to Advanced Scene Switcher.",
             "type": "string",
             "options": {
@@ -70,7 +70,7 @@
             }
           },
           "ws_message": {
-            "title": "OBS Websocket message",
+            "title": "OBS Websocket Message",
             "description": "The message to send to OBS as a raw Websocket message.",
             "type": "string",
             "options": {
