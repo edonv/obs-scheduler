@@ -28,19 +28,8 @@
           },
           "schedule_type": {
             "title": "Schedule Type",
-            "description": "The type of schedule for the event.",
             "propertyOrder": 2,
-            "type": "string",
-            "enum": [
-              "date",
-              "repeating"
-            ],
-            "options": {
-              "enum_titles": [
-                "Specific Date/Time",
-                "Repeating Event"
-              ]
-            }
+            "$ref": "#/definitions/ScheduleType"
           },
           "date": {
             "title": "Date",
@@ -67,29 +56,8 @@
           },
           "action": {
             "title": "Action",
-            "description": "Which kind of action should be triggered.",
             "propertyOrder": 4,
-            "type": "string",
-            "enum": [
-              "start_stream",
-              "stop_stream",
-              "start_recording",
-              "pause_recording",
-              "stop_recording",
-              "advanced_scene_switcher",
-              "obs_ws"
-            ],
-            "options": {
-              "enum_titles": [
-                "Start Stream",
-                "Stop Stream",
-                "Start Recording",
-                "Pause Recording",
-                "Stop Recording",
-                "Advanced Scene Switcher",
-                "Raw Websocket"
-              ]
-            }
+            "$ref": "#/definitions/EventAction"
           },
           "switcher_message": {
             "title": "Advanced Scene Switcher message",
@@ -180,5 +148,45 @@
       }
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "definitions": {
+    "ScheduleType": {
+      "description": "The type of schedule for an event.",
+      "type": "string",
+      "enum": [
+        "date",
+        "repeating"
+      ],
+      "options": {
+        "enum_titles": [
+          "Specific Date/Time",
+          "Repeating Event"
+        ]
+      }
+    },
+    "EventAction": {
+      "description": "Which kind of action should be triggered.",
+      "type": "string",
+      "enum": [
+        "start_stream",
+        "stop_stream",
+        "start_recording",
+        "pause_recording",
+        "stop_recording",
+        "advanced_scene_switcher",
+        "obs_ws"
+      ],
+      "options": {
+        "enum_titles": [
+          "Start Stream",
+          "Stop Stream",
+          "Start Recording",
+          "Pause Recording",
+          "Stop Recording",
+          "Advanced Scene Switcher",
+          "Raw Websocket"
+        ]
+      }
+    }
+  }
 }
