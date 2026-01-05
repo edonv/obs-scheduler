@@ -30,7 +30,7 @@
             "type": "string",
             "enum": [
               "date",
-              "repeating_event"
+              "repeating"
             ],
             "options": {
               "enum_titles": [
@@ -58,7 +58,7 @@
             "type": "string",
             "options": {
               "dependencies": {
-                "schedule_type": "repeating_event"
+                "schedule_type": "repeating"
               }
             }
           },
@@ -128,7 +128,7 @@
                 ],
                 "properties": {
                   "schedule_type": {
-                    "const": "repeating_event"
+                    "const": "repeating"
                   }
                 }
               }
