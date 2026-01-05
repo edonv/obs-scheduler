@@ -1,0 +1,20 @@
+{
+  "name": "obs-scheduler",
+  "version": "0.0.0",
+  "description": "A CLI tool for scheduling OBS functionality.",
+  "main": "./dist/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edonv/obs-scheduler.git"
+  },
+  "author": "edonv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edonv/obs-scheduler/issues"
+  },
+  "homepage": "https://github.com/edonv/obs-scheduler#readme"
+}
