@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/edonv/obs-scheduler/issues"
   },
-  "homepage": "https://github.com/edonv/obs-scheduler#readme"
+  "homepage": "https://github.com/edonv/obs-scheduler#readme",
+  "dependencies": {
+    "commander": "^14.0.2",
+    "obs-websocket-js": "^5.0.7"
+  }
 }
