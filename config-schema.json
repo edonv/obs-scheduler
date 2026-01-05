@@ -1,0 +1,184 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OBS Scheduler Config File Schema",
+  "type": "object",
+  "properties": {
+    "events": {
+      "title": "Events",
+      "description": "A list of events for triggering an action within OBS.",
+      "type": "array",
+      "format": "tabs",
+      "items": {
+        "title": "Event",
+        "description": "A scheduled event for triggering a set action in OBS.",
+        "type": "object",
+        "required": [
+          "schedule_type",
+          "action"
+        ],
+        "properties": {
+          "name": {
+            "title": "Name",
+            "description": "An optional name for the event.",
+            "propertyOrder": 1,
+            "type": "string"
+          },
+          "schedule_type": {
+            "title": "Schedule Type",
+            "description": "The type of schedule for the event.",
+            "propertyOrder": 2,
+            "type": "string",
+            "enum": [
+              "date",
+              "repeating_event"
+            ],
+            "options": {
+              "enum_titles": [
+                "Specific Date/Time",
+                "Repeating Event"
+              ]
+            }
+          },
+          "date": {
+            "title": "Date",
+            "description": "A date/time for when the action should trigger.",
+            "propertyOrder": 3,
+            "type": "string",
+            "format": "datetime-local",
+            "options": {
+              "dependencies": {
+                "schedule_type": "date"
+              }
+            }
+          },
+          "schedule": {
+            "title": "Schedule",
+            "description": "[WIP] A schedule for a repeating event.",
+            "propertyOrder": 3,
+            "type": "string",
+            "options": {
+              "dependencies": {
+                "schedule_type": "repeating_event"
+              }
+            }
+          },
+          "action": {
+            "title": "Action",
+            "description": "Which kind of action should be triggered.",
+            "propertyOrder": 4,
+            "type": "string",
+            "enum": [
+              "start_stream",
+              "stop_stream",
+              "start_recording",
+              "pause_recording",
+              "stop_recording",
+              "advanced_scene_switcher",
+              "obs_ws"
+            ],
+            "options": {
+              "enum_titles": [
+                "Start Stream",
+                "Stop Stream",
+                "Start Recording",
+                "Pause Recording",
+                "Stop Recording",
+                "Advanced Scene Switcher",
+                "Raw Websocket"
+              ]
+            }
+          },
+          "switcher_message": {
+            "title": "Advanced Scene Switcher message",
+            "description": "The message to send to Advanced Scene Switcher.",
+            "type": "string",
+            "options": {
+              "dependencies": {
+                "action": "advanced_scene_switcher"
+              }
+            }
+          },
+          "ws_message": {
+            "title": "OBS Websocket message",
+            "description": "The message to send to OBS as a raw Websocket message.",
+            "type": "string",
+            "options": {
+              "dependencies": {
+                "action": "obs_ws"
+              }
+            }
+          }
+        },
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "required": [
+                  "date"
+                ],
+                "properties": {
+                  "schedule_type": {
+                    "const": "date"
+                  }
+                }
+              },
+              {
+                "required": [
+                  "schedule"
+                ],
+                "properties": {
+                  "schedule_type": {
+                    "const": "repeating_event"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "oneOf": [
+              {
+                "not": {
+                  "properties": {
+                    "action": {
+                      "enum": [
+                        "advanced_scene_switcher",
+                        "obs_ws"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "required": [
+                  "switcher_message"
+                ],
+                "properties": {
+                  "action": {
+                    "const": "advanced_scene_switcher"
+                  }
+                }
+              },
+              {
+                "required": [
+                  "ws_message"
+                ],
+                "properties": {
+                  "action": {
+                    "const": "obs_ws"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "options": {
+          "switcher": false
+        }
+      }
+    }
+  },
+  "required": [
+    "events"
+  ],
+  "additionalProperties": false
+}
