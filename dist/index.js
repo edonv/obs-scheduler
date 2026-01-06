@@ -63,8 +63,15 @@ async function run() {
 program
     .name('obs-scheduler')
     .option('-c, --config <file-path>', 'config file path')
-    .option('-i, --ip-address <address:port>', 'OBS Websocket IP address and port', undefined)
-    .option('-p, --password [password]', 'OBS Websocket password')
+    .option(
+        '-i, --ip-address <address:port>',
+        'OBS Websocket IP address and port',
+        undefined,
+    )
+    .option(
+        '-p, --password [password]',
+        'OBS Websocket password',
+    )
     .action(run);
 
 await program.parseAsync(process.argv);
