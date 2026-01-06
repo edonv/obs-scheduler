@@ -72,7 +72,20 @@
           "ws_request": {
             "title": "OBS Websocket Message",
             "description": "The message to send to OBS as a raw Websocket message.",
-            "type": "string",
+            "type": "object",
+            "required": [
+              "type",
+              "data"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "data": {
+                "type": "object"
+              }
+            },
             "options": {
               "dependencies": {
                 "action": "obs_ws"
