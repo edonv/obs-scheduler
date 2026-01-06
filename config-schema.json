@@ -159,7 +159,7 @@
       }
     },
     "EventAction": {
-      "description": "Which kind of action should be triggered.",
+      "description": "An action to trigger in OBS.",
       "type": "string",
       "enum": [
         "start_stream",
