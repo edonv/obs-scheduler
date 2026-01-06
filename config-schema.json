@@ -45,12 +45,12 @@
           },
           "schedule": {
             "title": "Schedule",
-            "description": "[WIP] A schedule for a repeating event.",
+            "description": "[WIP] A schedule for a recurring event.",
             "propertyOrder": 3,
             "type": "string",
             "options": {
               "dependencies": {
-                "schedule_type": "repeating"
+                "schedule_type": "recurring"
               }
             }
           },
@@ -93,7 +93,7 @@
                 ],
                 "properties": {
                   "schedule_type": {
-                    "const": "repeating"
+                    "const": "recurring"
                   }
                 }
               }
@@ -149,12 +149,12 @@
       "type": "string",
       "enum": [
         "date",
-        "repeating"
+        "recurring"
       ],
       "options": {
         "enum_titles": [
           "Specific Date/Time",
-          "Repeating Event"
+          "Recurring Event"
         ]
       }
     },
