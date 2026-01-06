@@ -15,6 +15,7 @@ import { DateTime } from "luxon";
 /**
  * @typedef {Object} ConfigEvent
  * @property {string} [name]
+ * @property {boolean} [enabled=true]
  * @property {ConfigEventType} schedule_type
  * @property {string} [date] Only present if `schedule_type` is `'date'`.
  * @property {string} [schedule] Only present if `schedule_type` is `'recurring'`.
@@ -35,6 +36,10 @@ import { DateTime } from "luxon";
  * @returns {boolean}
  */
 export function checkEventSchedule(date, event) {
+    if (event.enabled == false) {
+        return false;
+    }
+
     if (event.date) {
         const eventDate = DateTime.fromISO(event.date);
         return eventDate.startOf('second').toMillis() == date.toMillis();
