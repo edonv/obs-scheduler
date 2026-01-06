@@ -61,7 +61,7 @@
           },
           "switcher_message": {
             "title": "Advanced Scene Switcher Message",
-            "description": "The message to send to Advanced Scene Switcher.",
+            "description": "A message to send to Advanced Scene Switcher.",
             "type": "string",
             "options": {
               "dependencies": {
