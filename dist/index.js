@@ -64,7 +64,7 @@ program
     .name('obs-scheduler')
     .option('-c, --config <file-path>', 'config file path')
     .option(
-        '-i, --ip-address <address:port>',
+        '-i, --ip-address [address:port]',
         'OBS Websocket IP address and port',
         undefined,
     )
