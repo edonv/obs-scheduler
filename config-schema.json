@@ -26,15 +26,23 @@
             "propertyOrder": 1,
             "type": "string"
           },
+          "enabled": {
+            "title": "Enabled",
+            "description": "Whether or not this event should be considered \"active\".",
+            "propertyOrder": 2,
+            "type": "boolean",
+            "default": true,
+            "format": "checkbox"
+          },
           "schedule_type": {
             "title": "Schedule Type",
-            "propertyOrder": 2,
+            "propertyOrder": 3,
             "$ref": "#/definitions/ScheduleType"
           },
           "date": {
             "title": "Date",
             "description": "A date/time for when the action should trigger.",
-            "propertyOrder": 3,
+            "propertyOrder": 4,
             "type": "string",
             "format": "datetime-local",
             "options": {
@@ -46,7 +54,7 @@
           "schedule": {
             "title": "Schedule",
             "description": "[WIP] A schedule for a recurring event.",
-            "propertyOrder": 3,
+            "propertyOrder": 4,
             "type": "string",
             "options": {
               "dependencies": {
@@ -56,7 +64,7 @@
           },
           "action": {
             "title": "Action",
-            "propertyOrder": 4,
+            "propertyOrder": 5,
             "$ref": "#/definitions/EventAction"
           },
           "switcher_message": {
