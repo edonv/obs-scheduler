@@ -71,6 +71,7 @@ program
     .option(
         '-p, --password [password]',
         'OBS Websocket password',
+        undefined,
     )
     .action(run);
 
