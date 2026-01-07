@@ -6,8 +6,6 @@ import { program } from "commander";
 
 program
     .name('obs-scheduler')
-    .version('0.0.1')
-    .option('-c, --config <file-path>', 'config file path')
     .option(
         '-i, --ip-address [address:port]',
         'OBS Websocket IP address and port',
@@ -18,6 +16,8 @@ program
         'OBS Websocket password',
         undefined,
     )
+    .option('-c, --config <file-path>', 'config file path')
+    .version('0.0.1')
     .action(run);
 
 await program.parseAsync(process.argv);
