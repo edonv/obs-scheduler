@@ -6,7 +6,7 @@ import { program } from "commander";
 
 program
     .name('obs-scheduler')
-    .version('0.0.0')
+    .version('0.0.1')
     .option('-c, --config <file-path>', 'config file path')
     .option(
         '-i, --ip-address [address:port]',
