@@ -1,5 +1,8 @@
 # obs-scheduler
 
+![NPM Version](https://img.shields.io/npm/v/obs-scheduler?color=%23302E31)
+![Static Badge](https://img.shields.io/badge/OBS-302E31?logo=obsstudio)
+
 A CLI for scheduling actions in OBS.
 
 ## Install
