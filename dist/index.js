@@ -24,10 +24,16 @@ async function run() {
 
     // Connect to OBS-WS
     const obs = new OBSWebSocket();
-    await obs.connect(
-        ipAddress ? `ws://${ipAddress}` : undefined,
-        password,
-    );
+
+    try {
+        await obs.connect(
+            ipAddress ? `ws://${ipAddress}` : undefined,
+            password,
+        );
+    } catch (error) {
+        console.error('Failed to connect to OBS.', error.code, error.message);
+        process.exit(1);
+    }
 
     /** @type {Config} */
     let config = {};
