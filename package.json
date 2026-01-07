@@ -23,6 +23,6 @@
     "obs-websocket-js": "^5.0.7"
   },
   "bin": {
-    "obs-scheduler": "./cli.js"
+    "obs-scheduler": "cli.js"
   }
 }
