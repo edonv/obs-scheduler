@@ -36,6 +36,13 @@ Options:
       "schedule_type": "date",
       "date": "2026-01-06T10:00",
       "action": "start_recording"
+    },
+    {
+      "name": "Example Event 2",
+      "schedule_type": "recurring",
+      // At 14:15 (2:15pm) on each first day of the month.
+      "schedule": "15 14 1 * *",
+      "action": "start_recording"
     }
   ]
 }
