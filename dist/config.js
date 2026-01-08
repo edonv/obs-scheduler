@@ -1,3 +1,4 @@
+import CronExpressionParser from "cron-parser";
 import { DateTime } from "luxon";
 
 /** @typedef {'date'|'recurring'} ConfigEventType */
@@ -47,7 +48,15 @@ export function checkEventSchedule(date, event) {
         // Compare parsed date (rounded to the previous second) to the current `date`
         return eventDate.startOf('second').toMillis() == date.toMillis();
     } else if (event.schedule) { // If event has the `schedule` field
-        return false;
+        try {
+            // Parse crontab string
+            const schedule = CronExpressionParser.parse(event.schedule);
+            // Return if the parsed schedule includes the current `date`
+            return schedule.includesDate(date.toJSDate());
+        } catch (error) {
+            // If parse fails, return `false`
+            return false;
+        }
     } else {
         return false;
     }
