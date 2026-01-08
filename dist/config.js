@@ -36,14 +36,17 @@ import { DateTime } from "luxon";
  * @returns {boolean}
  */
 export function checkEventSchedule(date, event) {
+    // Ignore a disabled event
     if (event.enabled == false) {
         return false;
     }
 
-    if (event.date) {
+    if (event.date) { // If event has the `date` field
+        // Parse event's date string to `DateTime`
         const eventDate = DateTime.fromISO(event.date);
+        // Compare parsed date (rounded to the previous second) to the current `date`
         return eventDate.startOf('second').toMillis() == date.toMillis();
-    } else if (event.schedule) {
+    } else if (event.schedule) { // If event has the `schedule` field
         return false;
     } else {
         return false;
