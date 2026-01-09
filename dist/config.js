@@ -19,8 +19,8 @@ import { DateTime } from "luxon";
  * @property {string} [name]
  * @property {boolean} [enabled=true]
  * @property {ConfigEventType} schedule_type
- * @property {string} [date] Only present if `schedule_type` is `'date'`.
- * @property {string} [schedule] Only present if `schedule_type` is `'recurring'`.
+ * @property {string|string[]} [date] Only present if `schedule_type` is `'date'`.
+ * @property {string|string[]} [schedule] Only present if `schedule_type` is `'recurring'`.
  * @property {ConfigEventAction} action
  * @property {string} [switcher_message] Only present if `action` is `'advanced_scene_switcher'`.
  * @property {OBSWSRequest} [ws_request] Only present if `action` is `'obs_ws'`.
