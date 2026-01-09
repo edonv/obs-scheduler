@@ -52,6 +52,7 @@
               {
                 "title": "Multiple Dates/Times",
                 "type": "array",
+                "uniqueItems": true,
                 "items": {
                   "$ref": "#/definitions/DateString"
                 }
@@ -75,6 +76,7 @@
               {
                 "title": "Multiple Schedules",
                 "type": "array",
+                "uniqueItems": true,
                 "items": {
                   "$ref": "#/definitions/CronTabString"
                 }
