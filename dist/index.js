@@ -33,12 +33,14 @@ export async function run() {
     }
 
     /** @type {Config} */
-    let config = {};
+    let config;
 
     function updateConfigFromFile() {
         const fileContents = fs.readFileSync(configPath, "utf8")
             .replace(/^[ \t]*\/\/.+$\n/gm, '');
+        const firstRun = config == undefined;
         config = JSON.parse(fileContents);
+        console.log((firstRun ? 'Read' : 'Updated') + ' configuration file.');
     }
 
     // Read config file for initial value
