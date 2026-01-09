@@ -44,20 +44,41 @@ export function checkEventSchedule(date, event) {
     }
 
     if (event.date) { // If event has the `date` field
-        // Parse event's date string to `DateTime`
-        const eventDate = DateTime.fromISO(event.date);
-        // Compare parsed date (rounded to the previous second) to the current `date`
-        return eventDate.startOf('second').toMillis() == date.toMillis();
-    } else if (event.schedule) { // If event has the `schedule` field
-        try {
-            // Parse crontab string
-            const schedule = CronExpressionParser.parse(event.schedule);
-            // Return if the parsed schedule includes the current `date`
-            return schedule.includesDate(date.toJSDate());
-        } catch (error) {
-            // If parse fails, return `false`
-            return false;
+        /** @type {string[]} */
+        let datesToCompare = new Array();
+        if (typeof event.date == 'string') {
+            datesToCompare.push(event.date);
+        } else {
+            datesToCompare.push(...event.date);
         }
+        
+        return datesToCompare.some((eventDate) => {
+            // Parse event's date string to `DateTime`
+            const eventDateTime = DateTime.fromISO(eventDate);
+            // console.log(eventDate.getTime(), date.getTime())
+            // Compare parsed date (rounded to the previous second) to the current `date`
+            return eventDateTime.startOf('second').toMillis() == date.toMillis();
+        });
+    } else if (event.schedule) { // If event has the `schedule` field
+        /** @type {string[]} */
+        let schedulesToCompare = new Array();
+        if (typeof event.schedule == 'string') {
+            schedulesToCompare.push(event.schedule);
+        } else {
+            schedulesToCompare.push(...event.schedule);
+        }
+
+        return schedulesToCompare.some((eventSchedule) => {
+            try {
+                // Parse crontab string
+                const schedule = CronExpressionParser.parse(eventSchedule);
+                // Return if the parsed schedule includes the current `date`
+                return schedule.includesDate(date.toJSDate());
+            } catch (error) {
+                // If parse fails, return `false`
+                return false;
+            }
+        });
     } else {
         return false;
     }
