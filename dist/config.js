@@ -9,6 +9,7 @@ import { DateTime } from "luxon";
 
 /**
  * @typedef {Object} OBSWSRequest
+ * @property {string} [id]
  * @property {string} type
  * @property {Object} data
  */
