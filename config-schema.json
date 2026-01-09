@@ -82,7 +82,12 @@
           },
           "ws_request": {
             "title": "OBS Websocket Message",
-            "$ref": "#/definitions/OBSWSRequest"
+            "$ref": "#/definitions/OBSWSRequest",
+            "options": {
+              "dependencies": {
+                "action": "obs_ws"
+              }
+            }
           }
         },
         "allOf": [
@@ -206,11 +211,6 @@
         },
         "data": {
           "type": "object"
-        }
-      },
-      "options": {
-        "dependencies": {
-          "action": "obs_ws"
         }
       }
     }
