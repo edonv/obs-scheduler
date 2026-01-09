@@ -87,64 +87,60 @@
         },
         "allOf": [
           {
-            "oneOf": [
-              {
-                "required": [
-                  "date"
-                ],
-                "properties": {
-                  "schedule_type": {
-                    "const": "date"
-                  }
-                }
-              },
-              {
-                "required": [
-                  "schedule"
-                ],
-                "properties": {
-                  "schedule_type": {
-                    "const": "recurring"
-                  }
+            "if": {
+              "properties": {
+                "schedule_type": {
+                  "const": "date"
                 }
               }
-            ]
+            },
+            "then": {
+              "required": [
+                "date"
+              ]
+            }
           },
           {
-            "oneOf": [
-              {
-                "not": {
-                  "properties": {
-                    "action": {
-                      "enum": [
-                        "advanced_scene_switcher",
-                        "obs_ws"
-                      ]
-                    }
-                  }
-                }
-              },
-              {
-                "required": [
-                  "switcher_message"
-                ],
-                "properties": {
-                  "action": {
-                    "const": "advanced_scene_switcher"
-                  }
-                }
-              },
-              {
-                "required": [
-                  "ws_request"
-                ],
-                "properties": {
-                  "action": {
-                    "const": "obs_ws"
-                  }
+            "if": {
+              "properties": {
+                "schedule_type": {
+                  "const": "recurring"
                 }
               }
-            ]
+            },
+            "then": {
+              "required": [
+                "schedule"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "action": {
+                  "const": "advanced_scene_switcher"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "switcher_message"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "action": {
+                  "const": "obs_ws"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "ws_request"
+              ]
+            }
           }
         ],
         "options": {
