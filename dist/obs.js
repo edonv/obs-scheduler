@@ -6,7 +6,9 @@
  * @returns {import("obs-websocket-js").RequestBatchRequest[]}
  */
 export function convertEventToWebsocketRequest(event) {
-    const requestID = `${event.name ? event.name + '.' : ''}${event.action}`;
+    const requestID = event.action == 'obs_ws' && event.ws_request?.id
+        ? event.ws_request.id
+        : `${event.name ? event.name + '.' : ''}${event.action}`;
 
     switch (event.action) {
         case "start_stream":
