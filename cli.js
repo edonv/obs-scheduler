@@ -17,7 +17,7 @@ program
         undefined,
     )
     .option('-c, --config <file-path>', 'config file path')
-    .version('0.1.1')
+    .version('0.1.2')
     .action(run);
 
 await program.parseAsync(process.argv);
