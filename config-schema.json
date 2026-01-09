@@ -41,11 +41,22 @@
             "$ref": "#/definitions/ScheduleType"
           },
           "date": {
-            "title": "Date",
-            "description": "A date/time for when the action should trigger.",
+            "title": "Date(s)",
+            "description": "A date/time (or a list of dates/times) for when the action should trigger.",
             "propertyOrder": 4,
-            "type": "string",
-            "format": "datetime-local",
+            "anyOf": [
+              {
+                "title": "Single Date/Time",
+                "$ref": "#/definitions/DateString"
+              },
+              {
+                "title": "Multiple Dates/Times",
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/DateString"
+                }
+              }
+            ],
             "options": {
               "dependencies": {
                 "schedule_type": "date"
@@ -169,6 +180,10 @@
           "Recurring Event"
         ]
       }
+    },
+    "DateString": {
+      "type": "string",
+      "format": "datetime-local"
     },
     "EventAction": {
       "description": "An action to trigger in OBS.",
