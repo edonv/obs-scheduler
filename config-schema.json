@@ -13,6 +13,7 @@
       "format": "tabs",
       "items": {
         "title": "Event",
+        "headerTemplate": "{{ self.name }}",
         "description": "A scheduled event for triggering a set action in OBS.",
         "type": "object",
         "required": [
