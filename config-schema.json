@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "OBS Scheduler Config File Schema",
+  "title": "OBS Scheduler Configuration",
   "type": "object",
   "required": [
     "events"
