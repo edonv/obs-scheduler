@@ -64,12 +64,22 @@
             }
           },
           "schedule": {
-            "title": "Schedule",
-            "description": "A schedule for a recurring event in crontab format.",
+            "title": "Schedule(s)",
+            "description": "A schedule (or a list of schedules) for a recurring event in crontab format.",
             "propertyOrder": 4,
-            "type": "string",
-            "format": "crontab",
-            "pattern": "^((((\\d+,)+\\d+|(\\d+(\\/|-|#)\\d+)|\\d+L?|\\*(\\/\\d+)?|L(-\\d+)?|\\?|[A-Z]{3}(-[A-Z]{3})?) ?){5,7})|(@(annually|yearly|monthly|weekly|daily|hourly|reboot))|(@every (\\d+(ns|us|µs|ms|s|m|h))+)$",
+            "anyOf": [
+              {
+                "title": "Single Schedule",
+                "$ref": "#/definitions/CronTabString"
+              },
+              {
+                "title": "Multiple Schedules",
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/CronTabString"
+                }
+              }
+            ],
             "options": {
               "dependencies": {
                 "schedule_type": "recurring"
@@ -184,6 +194,11 @@
     "DateString": {
       "type": "string",
       "format": "datetime-local"
+    },
+    "CronTabString": {
+      "type": "string",
+      "format": "crontab",
+      "pattern": "^((((\\d+,)+\\d+|(\\d+(\\/|-|#)\\d+)|\\d+L?|\\*(\\/\\d+)?|L(-\\d+)?|\\?|[A-Z]{3}(-[A-Z]{3})?) ?){5,7})|(@(annually|yearly|monthly|weekly|daily|hourly|reboot))|(@every (\\d+(ns|us|µs|ms|s|m|h))+)$"
     },
     "EventAction": {
       "description": "An action to trigger in OBS.",
